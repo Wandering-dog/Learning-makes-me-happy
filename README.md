@@ -1,4 +1,4 @@
-## [安卓端|APP]基于Auto.js的学习强国（[xuexiqiangguo]）自动学习辅助脚本
+## [安卓端|APP]基于[Auto.js](https://github.com/hyb1996/Auto.js)的学习强国（[xuexiqiangguo]）自动学习辅助脚本
 ---
 - ### 运行环境：
 > - 系统版本: Android 7.0+
