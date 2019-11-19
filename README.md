@@ -22,7 +22,7 @@
 ### 使用说明（欢迎使用并反馈）
 ******
 1. 下载项目  
-[点击可直接下载最新项目包](https://github.com/SuperMonster003/Auto.js_Projects/archive/Ant_Forest.zip)  
+[点击可直接下载最新项目包](https://github.com/Wandering-dog/Learning-makes-me-happy/archive/master.zip)  
 或点击页面右侧绿色 `Clone or download` 按钮  
 手机浏览器需在项目主页拉到底部点击 `Desktop version`  
 2. 将项目中的全部文件放置于移动设备存储  
