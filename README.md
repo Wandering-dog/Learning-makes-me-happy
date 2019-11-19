@@ -33,8 +33,7 @@
 英文系统默认目录 `./Scripts/`  
 若不存在则需手动建立 或在 `Auto.js` 软件中设置一个工作目录  
 3. 使用 `Auto.js` 运行 `*.js` 格式的脚本文件  
-运行 `Ant_Forest_Launcher.js` 文件可启动项目  
-运行 `Ant_Forest_Settings.js` 文件可进行项目配置  
+运行 `xuexiqiangguo.js` 文件可启动项目  
 4. 欢迎使用并反馈  
   
 > 安卓系统最低版本: `7.0` / `Android Nougat` / `Android N`  
