@@ -1,3 +1,16 @@
+
+/*
+ * @Description: 学习强国
+ * @version: 0.0.1
+ * @Author: 发给你的这个人
+ * @LastEditors: 发给你的这个人
+ * @Date: 2019-11-14 19:30:00
+ * @LastEditTime: 2019-11-14 19:30:00
+ * 使用方法：
+ *      Ctrl + Shift + P --> run server
+ *      手机连接
+ */
+
 auto.waitFor();//辅助权限授予
 auto.setMode("normal");
 
@@ -102,8 +115,7 @@ function readpapers(diff_num, diff_time){
         exit();
     }
     title1 = className("android.widget.TextView").depth(16).text("要闻").findOne().parent().parent();
-    selected = random(0, title1.childCount() - 1);
-    selected = 0;
+    selected = random(0, 3);
     log("(含 " + title1.childCount() + " 个主分类, 随机选取类别" + selected +")");
     //进入
     waitsec(1);
@@ -162,7 +174,7 @@ function readpaper(arr, diff_num, diff_time) {
                 //点击进入这篇文章
                 clickable_buttun.click();
                 //一篇文章最短30s
-                if (diff_num == 0) {
+                if (diff_time == 0) {
                     per_paper_time = random(30, 40);
                 }
                 else {
@@ -206,7 +218,7 @@ function readpaper(arr, diff_num, diff_time) {
                 }
                 //分享
                 if (arr[3] < share_diff && share) {
-                    sharing();
+                    //sharing();
                     toastLog("1.1.4 分享第"+share_diff+"次成功");
                     arr[3] += 1;
                 }
@@ -287,23 +299,6 @@ function sharing(){
     }
     toastLog("分享失败");
     exit();
-    // click(980, 2187);
-    // waitsec(1);
-    // //分享到学习强国
-    // click(135, 1473);
-    // waitsec(1);
-    // //分享到自己
-    // click(540, 864);
-    // waitsec(1);
-    // //发送按钮
-    // submit_buttun= text("发送").findOnce();
-    // if (submit_buttun) {
-    //     submit_buttun.click();
-    //     return true;
-    // }
-    // else {
-    //     toast("发送失败");
-    // }
 }
 
 /**
@@ -344,7 +339,7 @@ function watchvideo(diff_num, diff_time){
         waitsec(1);
         ss.child(selected).click();
     }
-    
+    waitsec(1);
     var video_time = 0;
     var video_num = 0;
     while (video_num < diff_num || video_time < diff_time){
@@ -428,7 +423,6 @@ function watchvideo(diff_num, diff_time){
 //订阅
 function subscribe(subscribe_need) {
     waitsec(1);
-    log("1231232121");
     enterscore();
     subscribe_go.click();
     subscribing = 0;
