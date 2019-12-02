@@ -1,15 +1,21 @@
-
 /*
  * @Description: 学习强国
  * @version: 0.0.1
- * @Author: 发给你的这个人
- * @LastEditors: 发给你的这个人
+ * @Author: 
+ * @LastEditors: 
  * @Date: 2019-11-14 19:30:00
  * @LastEditTime: 2019-11-14 19:30:00
  * 使用方法：
  *      Ctrl + Shift + P --> run server
  *      手机连接
  */
+
+
+//分享好友名称（最好写自己的名字, 默认为空，即不分享）
+name = '';
+
+//控制台打开
+// console.show();
 
 auto.waitFor();//辅助权限授予
 auto.setMode("normal");
@@ -115,6 +121,7 @@ function readpapers(diff_num, diff_time){
         exit();
     }
     title1 = className("android.widget.TextView").depth(16).text("要闻").findOne().parent().parent();
+    //BUG 只选择前4项
     selected = random(0, 3);
     log("(含 " + title1.childCount() + " 个主分类, 随机选取类别" + selected +")");
     //进入
@@ -218,7 +225,7 @@ function readpaper(arr, diff_num, diff_time) {
                 }
                 //分享
                 if (arr[3] < share_diff && share) {
-                    //sharing();
+                    sharing(name);
                     toastLog("1.1.4 分享第"+share_diff+"次成功");
                     arr[3] += 1;
                 }
@@ -279,26 +286,41 @@ function collecting(){
     toastLog("收藏失败");
     // click(865, 2187);
 }
-function sharing(){
-    //点击分享按钮
-    button = className("android.widget.ImageView").clickable().depth(10).drawingOrder(4).indexInParent(3);
-    if (button.exists()) {
-        button.findOnce().click();
-        waitsec(1);
-        button = text("分享到学习强国");
+
+function sharing(name){
+    if (name) {
+        //点击分享按钮
+        button = className("android.widget.ImageView").clickable().depth(10).drawingOrder(4).indexInParent(3);
         if (button.exists()) {
-            button.findOnce().parent().click();
-            //分享到最近联系人第一个
+            button.findOnce().click();
             waitsec(1);
-            button = className("android.widget.RelativeLayout").clickable();
-            //toastLog(button.find().size());
-            button.click();
-            toastLog("分享成功");
-            return true;
+            button = text("分享到学习强国");
+            if (button.exists()) {
+                button.findOnce().parent().click();
+                //分享到最近联系人第一个
+                waitsec(1);
+                // button = className("android.widget.LinearLayout").depth(9).drawingOrder(1).indexInParent(0);
+                // log(button.find().size());
+                button = text("搜索");
+                if (button.exists()) {
+                    log("123");
+                    button.findOnce().click();
+                    setText(name);
+                    waitsec(1);
+                    xx = className("android.widget.RelativeLayout").clickable().depth(19).drawingOrder(2).indexInParent(1);
+                    if (xx.exists()) {
+                        xx.click();
+                        waitsec(1);
+                        yy = text("发送").clickable();
+                        yy.findOnce().click();
+                        toastLog("分享成功");
+                        return true;
+                    }
+                }        
+            }
         }
+        toastLog("分享失败");
     }
-    toastLog("分享失败");
-    exit();
 }
 
 /**
@@ -383,7 +405,7 @@ function watchvideo(diff_num, diff_time){
                         if (time > (diff_time - video_time)) {
                             //一个视频最短1.5min
                             if (diff_time < 90) {
-                                whatching = random(30, 40);
+                                whatching = random(90, 100);
                                 
                             }
                             else {
@@ -589,7 +611,6 @@ function Qday() {
 
 
 
-console.show();
 startapp();
 //一直保持屏幕常亮
 device.keepScreenOn();
